@@ -1,0 +1,6 @@
+login
+agent
+deleteService
+12345
+kayaking
+logout
