@@ -58,7 +58,7 @@ public class frontEndSystem {
 
 		// Get input and check if correct for login
 		input = scan.nextLine();
-		while (input != "login") {
+		while (!input.equals("login")) {
 			System.out.println("Incorrect input! Please try again...");
 			input = scan.nextLine();
 		}
@@ -66,8 +66,9 @@ public class frontEndSystem {
 		input = ""; // Reset input
 
 		// Get input to check for agent / planner mode
+		System.out.println("What mode would you like to use?");
 		input = scan.nextLine();
-		while (input != "agent" || input != "planner") {
+		while (!input.equals("agent") && !input.equals("planner")) {
 			System.out.println("Incorrect input! Please try again...");
 			input = scan.nextLine();
 		}
