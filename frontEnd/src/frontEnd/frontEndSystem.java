@@ -6,20 +6,32 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-
+/**
+ * 
+ * @author 
+ * SHOULD BE USING JAVADOC COMMENTS FOR FILE
+ */
 public class frontEndSystem {
 	// ----- Class Variables ----- //
 	private static ArrayList<Service> services = new ArrayList<>();
 	private static Scanner scan = new Scanner(System.in);
+	
+	private static HashMap<String,Service> servicesMap = new HashMap<String,Service>();
 	// private boolean planner_mode = false;
 
 	// ----- Main Execution of Front End System ----- //
 	public static void main(String[] args) {
 		// When system starts, automatically ask to login
 		login();
-
+		
+		frontEndSystem.loadValidServiceFile("./bin/frontEnd/ValidServices.txt");
+		for(String i : servicesMap.keySet()) {
+			System.out.println(i);
+		}
+		
 		String service_selection = "";
 		while (true) {
 			// Get input for service here
@@ -122,6 +134,11 @@ public class frontEndSystem {
 
 		// Find service to delete
 		int index = -1;
+		
+		/*if(servicesMap.containsKey(input1)&&servicesMap.get(input1).getServiceName().equals(input2)) {
+			servicesMap.remove(input1);
+		}*/
+		
 		for (int i = 0; i < services.size(); i++) {
 			if (services.get(i).getServiceNumber().equals(input1) && services.get(i).getServiceName().equals(input2)) {
 				index = i;
@@ -268,8 +285,28 @@ public class frontEndSystem {
 	}
 
 	// Load valid services list
-	private static void loadFile() {
-		// Some code to iterate through newline(?) delineated file
+	private static void loadValidServiceFile(String filePath) {
+		String serviceNumber;
+		BufferedReader fileReader;
+		
+		try {
+			fileReader = new BufferedReader(new FileReader(filePath));
+			serviceNumber = fileReader.readLine();
+			
+			while(!serviceNumber.equals("00000")) {
+				//For Each entry add new service
+				Service service = new Service();
+				service.setServiceNumber(serviceNumber);
+				services.add(service);
+				servicesMap.put(serviceNumber, service);
+				serviceNumber = fileReader.readLine();
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// Print the menu for the user
