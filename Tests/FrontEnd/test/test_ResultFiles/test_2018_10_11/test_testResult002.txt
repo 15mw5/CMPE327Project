@@ -1,0 +1,20 @@
+********************** 2018_10_11 TEST CASES **********************
+
+============== FAILED TEST CASES ==============
+CAN_001input test case failed
+   Expected out was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+   Test Output was
+	Type 'login' to access the system...
+Logging in... Success!
+----- MAIN MENU -----
+Type any of the following commands to continue...
+logout
+createService
+deleteService
+sellTicket
+cancelTicket
+changeTicket
+Logging out... system will shut down...
+============== PASSED TEST CASES ==============
+ALL TESTS FAILED
