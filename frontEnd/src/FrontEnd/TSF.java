@@ -42,7 +42,7 @@ public class TSF{
 		System.out.println("Logged: "+ transaction);
 	}
 	
-	public void printTSF() {
+	public void endTSF() {
 		pw.write("EOS");
 	}
 	public void closeLog() {

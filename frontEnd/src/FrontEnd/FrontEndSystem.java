@@ -7,6 +7,31 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * This class represents a terminal in the Queen’s Intercity Excursion System
+ * (QIES) It takes as input a valid Services list named validService.txt located
+ * in the FrontEnd project folder and outputs a transaction summary file named
+ * TSF.txt also located in the FronEnd project folder.
+ * 
+ * The program runs in a continuous while loop until no more input from std.IN
+ * is detected. A user must log in and specify the mode of operation to be used
+ * before the session begins. Privileged transactions are guarded by the boolean
+ * flag variable "inPlannerMode". For modularity purposes, each transaction is
+ * processed an individual method. To eliminate redundancy, transactions use
+ * helper methods to retrieve and validate user input.
+ * 
+ * A TSF class object is used to create the transaction summary file. The method
+ * tsf.log(serviceCode, serviceName, ticketsOrCapacity, serviceName2,
+ * serviceDate) is used in the transaction methods to write successful
+ * transactions to the transaction summary file. The method tsf.endFile() is
+ * used in the logout method to add the EOS line at the end of the transaction
+ * summary file. Lastly the method tsf.close() is used in both the logout method
+ * and the catch clause to close the file writer and ensure there are no
+ * resource leaks
+ * 
+ * @author Nathan Lee, Primrose Chareka, Max Karan, Michael Wiederick
+ * @version 1.0
+ */
 public class FrontEndSystem {
 	// ----- Class Variables ----- //
 	private static HashSet<String> validServices = new HashSet<String>();
@@ -31,7 +56,7 @@ public class FrontEndSystem {
 
 					// Process selected transaction
 					switch (selectedTransaction) {
-					//Privileged transactions
+					// Privileged transactions
 					case "createService":
 						if (inPlannerMode) {
 							createService();
@@ -45,13 +70,13 @@ public class FrontEndSystem {
 						} else {
 							System.out.println("This is a privilaged transaction. Please try another transaction...");
 						}
-						break;			
-					//General transactions
+						break;
+					// General transactions
 					case "cancelTicket":
 						cancelTicket();
 						break;
 					case "changeTicket":
-						 changeTicket();
+						changeTicket();
 						break;
 					case "sellTicket":
 						sellTicket();
@@ -112,7 +137,7 @@ public class FrontEndSystem {
 	 */
 	private static void logout() {
 		loggedOut = true;
-		tsf.printTSF();
+		tsf.endTSF();
 		tsf.closeLog();
 		System.out.println("Logging out successfully");
 	}
@@ -187,9 +212,9 @@ public class FrontEndSystem {
 
 	/**
 	 * Cancels tickets for an existing service and logs the transaction in the TSF.
-	 * Validates user input before logging the transaction.If the service number is
-	 * not listed in the valid services list, returns to main without logging a
-	 * transaction
+	 * Assumes user input has been properly validated with regards to formatting. If
+	 * the service number is not listed in the valid services list, returns to main
+	 * without logging a transaction
 	 */
 	private static void cancelTicket() {
 		String serviceCode = "CAN";
@@ -208,8 +233,9 @@ public class FrontEndSystem {
 	}
 
 	/**
-	 * Changes tickets for an existing service to another existing service and logs the transaction in the TSF.
-	 * Validates user input before logging the transaction.If either of the two service numbers are not
+	 * Changes tickets for an existing service to another existing service and logs
+	 * the transaction in the TSF. Assumes user input has been properly validated
+	 * with regards to formatting. If either of the two service numbers are not
 	 * listed in the valid services list, returns to main without logging a
 	 * transaction
 	 */
@@ -219,9 +245,8 @@ public class FrontEndSystem {
 		String serviceNumber2 = getServiceNumber();
 		String numTickets = getNumberOfTickets();
 
-
 		// Find service to change tickets for
-		if (validServices.contains(serviceNumber)&&validServices.contains(serviceNumber)) {
+		if (validServices.contains(serviceNumber) && validServices.contains(serviceNumber)) {
 			tsf.logTransaction(serviceCode, serviceNumber, numTickets, serviceNumber2, null, null);
 		} else {
 			System.out.println("Error! Did not find a matching service!");
@@ -229,7 +254,7 @@ public class FrontEndSystem {
 
 		System.out.println("Returning to main menu...");
 	}
-	
+
 	// ======================= User Input Methods ======================= //
 	private static String getServiceNumber() {
 		System.out.println("Please enter the service number");
@@ -244,7 +269,7 @@ public class FrontEndSystem {
 			serviceNumber = scan.nextLine();
 		}
 		return null;
-	}// getServiceNumber();
+	}
 
 	private static String getServiceCapacity() {
 		System.out.println("Please enter the service capacity");
@@ -260,7 +285,7 @@ public class FrontEndSystem {
 			}
 		}
 		return null;
-	}// getServiceCapacity()
+	}
 
 	private static String getServiceName() {
 		System.out.println("Please enter the service name");
@@ -278,15 +303,20 @@ public class FrontEndSystem {
 			serviceName = scan.nextLine().toLowerCase();
 		}
 		return null;
-	}// getServiceName()
+	}
 
 	private static String getServiceDate() {
 		System.out.println("Please enter the service date");
 		String serviceDate = scan.nextLine();
 
-		while (!serviceDate.matches("[0-9]{8}\\.[0-9]{4}")) {
-			System.out.println("Invalid Date. Please enter a date in the format YYYYMMDD.hhmm");
-			serviceDate = scan.nextLine();
+		boolean isValid = false;
+		while (!isValid) {
+			if (!serviceDate.matches("[0-9]{8}\\.[0-9]{4}")) {
+				System.out.println("Invalid Date. Please enter a date in the format YYYYMMDD.hhmm");
+				serviceDate = scan.nextLine();
+			} else {
+				return serviceDate;
+			}
 		}
 
 		// while (!isValid) {
@@ -314,7 +344,7 @@ public class FrontEndSystem {
 		// }
 		// } // end while
 
-		return serviceDate;
+		return null;
 	}
 
 	private static String getNumberOfTickets() {
