@@ -103,7 +103,7 @@ public class FrontEndSystem {
 		System.out.println("Logging in using " + input + " mode ... Success!");
 
 		// After a successful login, load the valid services and print menu
-		loadValidServiceFile("../FrontEnd/validServices.txt");
+		loadValidServiceFile("./src/FrontEnd/validServices.txt");
 		printMenu();
 	}
 
