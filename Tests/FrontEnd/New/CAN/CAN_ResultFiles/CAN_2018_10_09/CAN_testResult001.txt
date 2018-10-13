@@ -1,0 +1,40 @@
+********************** 2018_10_09 TEST CASES **********************
+
+============== FAILED TEST CASES ==============
+CAN_002input test case failed
+   Expected out was
+	CAN 12345 1 00000 Bus Tour1 201810272230
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+CAN_003input test case failed
+   Expected out was
+	
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+CAN_004input test case failed
+   Expected out was
+	
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+CAN_005input test case failed
+   Expected out was
+	
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+CAN_006input test case failed
+   Expected out was
+	
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+CAN_007input test case failed
+   Expected out was
+	CAN 12345 11 00000 Bus Tour1 201810272215
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+CAN_008input test case failed
+   Expected out was
+	CAN 12345 21 00000 Bus Tour1 201810272215
+   Test Output was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+============== PASSED TEST CASES ==============
+CAN_001input test case passed
