@@ -29,7 +29,7 @@ import java.io.IOException;
  * and the catch clause to close the file writer and ensure there are no
  * resource leaks
  *
- * @author Nathan Lee, Primrose Chareka, Max Karan, Michael Wiederick
+ * @author Nathan Lee, Primrose Chareka, Max Karan, Michaela Wiederick
  * @version 1.0
  */
 public class FrontEndSystem {
