@@ -1,8 +1,0 @@
-login
-planner
-deleteService
-12345
-Kayaking
-cancelTicket
-12345
-1

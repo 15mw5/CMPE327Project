@@ -1,2 +1,0 @@
-CRE 12345 0 00000 test service 20180930
-EOS

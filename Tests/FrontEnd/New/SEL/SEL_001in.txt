@@ -1,6 +1,0 @@
-login
-agent
-sellTicket
-1234
-5
-logout

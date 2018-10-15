@@ -1,0 +1,21 @@
+Type 'login' to access the system...
+What mode would you like to use?
+Logging in using agent mode ... Success!
+----- MAIN MENU -----
+Type any of the following commands to continue...
+createService
+deleteService
+cancelTicket
+changeTicket
+sellTicket
+logout
+Please enter a valid transaction...
+Please enter the service number
+Please enter the number of tickets
+Logged: CAN 12345 1 00000 **** ****
+Cancelled 1 tickets for service 12345
+Returning to main menu...
+Please enter a valid transaction...
+Logging out successfully
+Type 'login' to access the system...
+End of file input

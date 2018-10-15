@@ -1,8 +1,0 @@
-login
-agent
-sellTicket
-12345
-99
-sellTicket
-12345
-99

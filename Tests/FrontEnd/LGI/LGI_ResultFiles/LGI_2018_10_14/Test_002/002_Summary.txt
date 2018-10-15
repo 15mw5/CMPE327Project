@@ -1,0 +1,20 @@
+********************** 2018_10_14 TEST CASES **********************
+
+============== FAILED TEST CASES ==============
+LGI_002 test case failed
+   Expected out was
+	CAN 12345 1 00000 Bus Tour1 201810
+   Test Output was
+	EOS
+LGI_003 test case failed
+   Expected out was
+	CAN 12345 1 00000 Bus Tour1 201810272215
+   Test Output was
+	EOS
+LGI_004 test case failed
+   Expected out was
+	CAN 12345 1 00000 Bus Tour1 201810
+   Test Output was
+	EOS
+============== PASSED TEST CASES ==============
+LGI_001 test case passed

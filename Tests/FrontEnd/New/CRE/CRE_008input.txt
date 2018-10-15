@@ -1,6 +1,0 @@
-login
-planner
-createservice
-98765
-20180930
-te

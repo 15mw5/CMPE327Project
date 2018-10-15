@@ -1,5 +1,0 @@
-login
-planner
-deleteService
-00001
-Kayaking

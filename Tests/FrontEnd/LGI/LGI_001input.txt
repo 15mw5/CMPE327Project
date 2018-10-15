@@ -1,6 +1,6 @@
 login
 agent
-cancelticket
+cancelTicket
 12345
 1
-logout 
+logout
